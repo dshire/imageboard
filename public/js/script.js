@@ -81,6 +81,8 @@ var UploadView = Backbone.View.extend({
         'click button': function(e) {
             this.model.set({
                 title: this.$el.find('input[name="title"]').val(),
+                user: this.$el.find('input[name="user"]').val(),
+                descr: this.$el.find('input[name="descr"]').val(),
                 file: this.$el.find('input[type="file"]').prop('files')[0]
             }).save();
         }
@@ -98,6 +100,8 @@ var UploadModel = Backbone.Model.extend({
 
         formData.append('file', this.get('file'));
         formData.append('title', this.get('title'));
+        formData.append('user', this.get('user'));
+        formData.append('descr', this.get('descr'));
 
         var model = this;
         $.ajax({

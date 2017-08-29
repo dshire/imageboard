@@ -25,10 +25,19 @@ body {
 
 h1 {
     color: white;
-    margin: 10px auto;
+    margin: 10px 80px;
     font-size: 4rem;
     text-align: center;
     font-family: "Brush Script MT";
+
+}
+
+#upload-btn {
+    position: absolute;
+
+    height: 50px;
+    right: 20px;
+    top: 20px;
 }
 
 .container {
@@ -68,11 +77,11 @@ h4 {
     font-family: Rockwell;
     font-size: 1.2rem;
     margin:auto;
+    text-align: left;
 
 }
 
 .p-cont {
-    text-align: left;
     margin-bottom: 5px;
 }
 
