@@ -1,0 +1,81 @@
+*{
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    user-select: none;
+    cursor: default;
+}
+
+html {
+    font-size: 10px;
+
+}
+
+body {
+    background-color: #29296a;
+}
+
+#main {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+}
+
+h1 {
+    color: white;
+    margin: 10px auto;
+    font-size: 4rem;
+    text-align: center;
+    font-family: "Brush Script MT";
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+
+    margin: 20px;
+    border: solid black 4px;
+}
+
+.img-container {
+    padding: 10px;
+    padding-bottom: 3px;
+    border-bottom: none;
+    height: 200px;
+    display:block;
+}
+
+.img {
+    margin: auto;
+    max-height:180px;
+    max-width: 100%;
+}
+
+.text {
+    display: block;
+    margin: 0 5px;
+}
+
+h4 {
+    font-family: Rockwell;
+    margin: 0 0 5px 0;
+    font-size: 1.5rem;
+}
+
+.text p {
+    font-family: Rockwell;
+    font-size: 1.2rem;
+    margin:auto;
+
+}
+
+.p-cont {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.descrip {
+    font-style: italic;
+}

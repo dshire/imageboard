@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/stylesheet.css">
+    <title>Image Board</title>
+</head>
+
+<body>
+    <h1>The Best Image Board in the World</h1>
+    <div id="main"></div>
+
+
+    <template id="upload">
+        <input type="file">
+        <input type="text" placeholder="title" name="title">
+        <button>SENDEN</button>
+    </template>
+
+    <link rel="icon" href="http://www.yoursite.com/favicon.ico?v=2" />
+
+    <template id="images">
+            {{#each data}}
+                <div class="container">
+                    <div class="img-container"><img class="img" src="{{this.url}}{{this.image}}" alt="Image"></div>
+                    <div class="text">
+                        <div><h4>{{this.title}}</h4><p class="descrip">{{this.description}}</p></div>
+                        <div class="p-cont"><p>Uploader: {{this.username}}</p></div>
+                    </div>
+                </div>
+            {{/each}}
+        </template>
+
+    <script src="/js/handlebars.min.js"></script>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/underscore-min.js"></script>
+    <script src="/js/backbone-min.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
