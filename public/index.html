@@ -5,37 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/stylesheet.css">
-    <title>Image Board</title>
+    <title>The Best Image Board in the World</title>
 </head>
 
 <body>
     <h1>The Best Image Board in the World</h1>
-    <<img id="upload-btn" src="/images/upload.png" alt="upload-btn">
+    <a href="/#upload"><img id="upload-btn" src="/images/upload.png" alt="upload-btn"></a>
     <div id="main"></div>
-    <div id="upload"></div>
+    <div id="modal"></div>
 
-
-    <template id="upload">
-        <input type="file">
-        <input type="text" placeholder="username" name="user">
-        <input type="text" placeholder="title" name="title">
-        <input type="text" placeholder="description" name="descr">
-        <button>SENDEN</button>
-    </template>
-
-    <link rel="icon" href="http://www.yoursite.com/favicon.ico?v=2" />
 
     <template id="images">
-            {{#each data}}
-                <div class="container">
-                    <div class="img-container"><img class="img" src="{{this.url}}{{this.image}}" alt="Image"></div>
-                    <div class="text">
-                        <div><h4>{{this.title}}</h4><p class="descrip">{{this.description}}</p></div>
-                        <div class="p-cont"><p>Uploader: {{this.username}}</p></div>
+        {{#each data}}
+        <div class="container">
+            <div class="img-container"><img class="img" src="{{this.url}}{{this.image}}" alt="Image"></div>
+            <div class="text">
+                <div><h4>{{this.title}}</h4><p class="descrip">{{this.description}}</p></div>
+                <div class="p-cont"><p id="up-by">Uploader: {{this.username}}</p></div>
+            </div>
+        </div>
+        {{/each}}
+    </template>
+
+    <template id="upload">
+        <div id="shadow">
+            <div id="upload-field">
+                <h2>Upload a new image</h2><p id="x">x</p>
+                <input type="text" placeholder="title" name="title">
+                <input type="text" placeholder="description" name="descr">
+                <input type="text" placeholder="username" name="user">
+                <input type="file" id="img-select" accept="image/*">
+                <button id="up-btn">upload</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="image">
+        <div id="shadow">
+            <div id="image-field">
+                <h2>{{this.title}}</h2><p id="x">x</p>
+                <div id="img-and-comments">
+                    <div id="img-area">
+                        <div class="img-container-big"><img class="img-big" src="{{this.url}}{{this.image}}" alt="Image"></div>
+                        <div class="text-big">
+                            <div><p class="descrip-big">{{this.description}}</p></div>
+                            <div class="p-big"><p id="uploader-big">Uploader: {{this.username}}</p></div>
+                        </div>
+                    </div>
+                    <div id="comments-area">
+                        <div id="comments-display">
+                            {{#each this.comments}}
+                            <div class="comment">
+                                <p>{{this.author}}: {{this.comment}}</p>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div id="post-comment">
+                            <input type="text" placeholder="comment" name="comment" required>
+                            <input type="text" placeholder="author" name="author" required>
+                            <button id="post-btn">post</button>
+                        </div>
                     </div>
                 </div>
-            {{/each}}
-        </template>
+            </div>
+        </div>
+    </template>
 
     <script src="/js/handlebars.min.js"></script>
     <script src="/js/jquery-3.1.1.min.js"></script>

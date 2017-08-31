@@ -17,9 +17,9 @@ body {
 
 #main {
     display: flex;
-    flex-flow: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-content: center;
 }
 
@@ -34,17 +34,21 @@ h1 {
 
 #upload-btn {
     position: absolute;
-
+    background-color: white;
     height: 50px;
-    right: 20px;
-    top: 20px;
+    right: 15px;
+    top: 15px;
+    padding: 5px;
+    border-radius: 10px;
+    border: black 1px solid;
+    cursor: pointer;
 }
 
 .container {
     text-align: center;
     background-color: white;
 
-    margin: 20px;
+    margin: 10px;
     border: solid black 4px;
 }
 
@@ -77,14 +81,141 @@ h4 {
     font-family: Rockwell;
     font-size: 1.2rem;
     margin:auto;
-    text-align: left;
 
 }
 
 .p-cont {
+    text-align: right;
     margin-bottom: 5px;
 }
 
 .descrip {
     font-style: italic;
+    text-align:center;
+}
+
+#up-by {
+    font-size: 1rem;
+
+}
+
+/*UPLOAD*/
+#modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 3;
+
+}
+
+#shadow {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.63);
+    z-index: 5;
+
+}
+
+#upload-field {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    height: 50%;
+    width: 50%;
+    background-color: rgb(0, 0, 0);
+    border-radius: 25px;
+    z-index: 10;
+    border: white 1px solid;
+    padding:10px;
+    text-align: center;
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.75);
+}
+
+#x {
+    position: absolute;
+    top: 8px;
+    right: 15px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+#upload-field h2{
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    font-family: "Brush Script MT";
+    margin-bottom: 35px;
+}
+
+#upload-field input {
+    display:block;
+    margin: 10px auto;
+}
+
+
+
+#img-select {
+    width: 115px;
+}
+#up-btn {
+    color: white;
+    background-color: black;
+    border: white 1px solid;
+    font-family: sans-serif;
+    font-size: 2rem;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: Rockwell;
+}
+
+
+
+
+/*  -----------  SINGLE IMAGE  ----------- */
+
+#image-field {
+    color: white;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    height: 80%;
+    width: 80%;
+    /*max-width: 80%;*/
+    background-color: rgb(0, 0, 0);
+    border-radius: 25px;
+    z-index: 10;
+    border: white 1px solid;
+    padding:10px;
+    text-align: center;
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.75);
+}
+
+#img-and-comments {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.img-container-big {
+    max-height: 80%;
+    max-width: 80%;
+}
+
+.img-big{
+    max-height: 70vh;
+    max-width: 80%;
+    padding: 20px;
+}
+
+#comments-area {
+    width: 300px;
 }

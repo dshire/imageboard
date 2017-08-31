@@ -44,7 +44,12 @@ const client = knox.createClient({
     bucket: 'reallydavid'
 });
 
+app.use(require('body-parser').urlencoded({
+    extended: false
+}));
 
+var favicon = require('serve-favicon');
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
@@ -54,16 +59,33 @@ app.get('/', function(req, res) {
 
 app.get('/images', function(req, res) {
     db.query('SELECT * FROM images').then(function(result) {
-        // console.log(result);
+        // console.log(result.rows);
         for (var i in result.rows) {
             result.rows[i].url = url;
         }
         res.json({
-            data: result.rows
+            data: result.rows.reverse()
 
         });
     });
 });
+
+app.get('/image/:id', function(req, res) {
+    db.query(`SELECT * FROM images WHERE image = $1`, [req.params.id]).then(function(result){
+        result.rows[0].url = url;
+        var data = result.rows[0];
+        db.query(`SELECT * FROM comments WHERE comment_id = $1 ORDER BY created_at DESC NULLS LAST`, [result.rows[0].id]).then(function(result){
+            data.comments = result.rows;
+            // console.log(data);
+
+            res.json( data );
+        });
+
+    }).catch(function(err) {
+        console.log(err);
+    });
+});
+
 
 app.post('/upload', uploader.single('file'), uploadToS3, function(req, res) {
     // If nothing went wrong the file is already in the uploads directory
@@ -75,7 +97,22 @@ app.post('/upload', uploader.single('file'), uploadToS3, function(req, res) {
     });
 });
 
+app.post('/comment/add/:id', function (req, res) {
+    db.query(`SELECT id FROM images WHERE image = $1`, [req.params.id]).then(function(result){
+        // console.log(req.body);
+        // console.log(result);
+        db.query(`INSERT INTO comments (comment, author, comment_id) VALUES ($1, $2, $3)`, [req.body.comment, req.body.author, result.rows[0].id]);
+        res.json({
+            success: true
+        });
+    });
+});
+
+
+
+
 app.listen(8080, () => console.log(`I'm listening.`));
+
 
 
 
