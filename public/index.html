@@ -43,30 +43,38 @@
     <template id="image">
         <div id="shadow">
             <div id="image-field">
-                <h2>{{this.title}}</h2><p id="x">x</p>
-                <div id="img-and-comments">
-                    <div id="img-area">
-                        <div class="img-container-big"><img class="img-big" src="{{this.url}}{{this.image}}" alt="Image"></div>
-                        <div class="text-big">
-                            <div><p class="descrip-big">{{this.description}}</p></div>
-                            <div class="p-big"><p id="uploader-big">Uploader: {{this.username}}</p></div>
-                        </div>
+
+                <div id="img-area">
+                        <img class="img-big" src="{{this.url}}{{this.image}}" alt="Image">
+                </div>
+
+                <div id="comments-area">
+                    <div class="text-head">
+                        <h2>{{this.title}}</h2><p id="x">x</p>
+                        <div><p class="descrip-big">{{this.description}}</p></div>
+                        <div class="p-big"><p id="uploader-big">Uploader: {{this.username}}</p></div>
                     </div>
-                    <div id="comments-area">
-                        <div id="comments-display">
+                    <div id="comments-display">
+                        {{#if this.comments}}
+                            <h3 id="comment-title">Comments:</h3>
                             {{#each this.comments}}
                             <div class="comment">
                                 <p>{{this.author}}: {{this.comment}}</p>
                             </div>
                             {{/each}}
-                        </div>
-                        <div id="post-comment">
-                            <input type="text" placeholder="comment" name="comment" required>
-                            <input type="text" placeholder="author" name="author" required>
+                        {{else}}
+                            <h3 id="comment-title">Be the first to comment!</h3>
+                        {{/if}}
+                    </div>
+                    <div id="post-comment">
+                        <input type="text" placeholder="  your comment" name="comment" required>
+                        <input type="text" placeholder="  name" name="author" required>
+                        <div id="btn-div">
                             <button id="post-btn">post</button>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </template>
